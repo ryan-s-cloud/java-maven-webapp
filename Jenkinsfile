@@ -4,6 +4,8 @@ pipeline {
     tools
     {
        maven "Maven"
+       git "Git"
+       ansible "Ansible"
     }
      
     stages {
