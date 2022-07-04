@@ -10,10 +10,10 @@ pipeline {
     stages {
       stage('checkout') {
             steps {
-               git branch: 'master', url: 'https://github.com/ryan-s-cloud/java-maven-webapp.git'
+               git branch: 'main', url: 'https://github.com/ryan-s-cloud/java-maven-webapp.git'
             }
         }
-         stage('Tools Init') {
+      stage('Tools Init') {
             steps {
                script {
                  echo "PATH = ${PATH}"
@@ -23,13 +23,13 @@ pipeline {
             }
         }
 
-         stage('Execute Maven') {
+       stage('Execute Maven') {
             steps {
                sh 'mvn package'             
             }
         }
          
-        stage('Ansible Deploy') {
+       stage('Ansible Deploy') {
             steps {
                sh "ansible-playbook main.yml -i hosts.yml --user jenkins --key-file ~/.ssh/id_rsa"
             }
