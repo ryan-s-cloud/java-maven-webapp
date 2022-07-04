@@ -16,7 +16,7 @@ pipeline {
          
        stage('Ansible Deploy') {
           steps {
-             sh "cd ${WORKSPACE} && ansible-playbook main.yml -i hosts.yml --user ansible --key-file ~/.ssh/id_rsa"
+             sh "ansible-playbook main.yml -i hosts.yml --user ansible --key-file ~/.ssh/id_rsa"
           }
        }
     }
