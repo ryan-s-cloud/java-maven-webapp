@@ -4,7 +4,7 @@ pipeline {
     tools
     {
        maven "Maven"
-       git "Git"
+       git "Default"
        ansible "Ansible"
     }
      
