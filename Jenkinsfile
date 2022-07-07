@@ -1,10 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-      SSH_KEY = credentials('ANSIBLE_SSH_KEY')
-    }
-    
     tools {
        maven "Maven"
        git "Default"
@@ -19,7 +15,7 @@ pipeline {
          
        stage('Ansible Deploy') {
           steps {
-              sh "ansible-playbook main.yml -i hosts.yml --user ansible --key-file ${SSH_KEY}"
+              ansiblePlaybook credentialsId:'ANSIBLE_SSH_KEY',disableHostKeyChecking:true,installation:'Ansible',inventory:'hosts.yml',playbook:'main.yml'
           }
        }
     }
